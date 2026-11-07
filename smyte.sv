@@ -21,8 +21,7 @@ module smyte (
   control_signal_controller CSC (.opcode(opcode), .control_signals(control_signals));
 
   //execute and ALU stage
-  logic [
-  alu myalu (.control_signals(control_signals), .reg1(reg1), .reg2(reg2), .reg_out(reg_out));
+  alu A (.a(), .b(), .alu_op(control_signals[6:5]), .c(), .negative(), .zero(), .carry(), .overflow());
   
 endmodule
 
