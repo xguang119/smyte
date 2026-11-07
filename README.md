@@ -1,4 +1,5 @@
-# 7bitCPU
+# smyte, 7-bit cpu
+small but mighty (not really)
 quick simple (hopefully) weekend project of a 7-bit cpu
 
 Bored, so want to design a small processor to tapeout on TinyTapeout.
