@@ -1,12 +1,12 @@
 # smyte, 7-bit cpu
 small but mighty (not really)
 
-quick simple (hopefully) weekend project of a 7-bit cpu
-Bored, so want to design a small processor to tapeout on TinyTapeout.
+quick simple (hopefully) weekend project of a 7-bit cpu.
+I got bored, so want to design a small processor to tapeout on TinyTapeout.
 
 I think I will try to make two versions, on which is a more "traditional" cpu in which programs are loaded into memory, then the pc starts execution from the first line.
 Another which will target tinytapeout, such that you can input instructions, which will instantly execute.
-The main differences would be the lack of avaliable memory, the function of a program counter, and possible instrution to view registers and memory.
+The main differences would be the lack of avaliable memory, the function of a program counter, and possible instruction to view registers and memory.
 
 My head tells me doing the first, then the second, would be easier.
 My heart tells me the second is more fun.
@@ -43,10 +43,10 @@ Misc. (probably only for tinytapeout version)
 - PRT #, [addr] //prints addr contents into output, # selects if reg or memory
 
 ### Instruction Formats
-C: [6:4][3:2][1:0] = {opcode, rd, ro} //used for LD, STR, ADD, and SUB
-B: [6:4][3:2][1:0] = {opcode, type, r} //used for all branch instructions
-H: [6:4][3:0] = {opcode, immediate} //used for LI
-S: [6:4][3][2:0] = {opcode, type, addr/reg} //used for PRT
+- C: [6:4][3:2][1:0] = {opcode, rd, ro} //used for LD, STR, ADD, and SUB
+- B: [6:4][3:2][1:0] = {opcode, type, r} //used for all branch instructions
+- H: [6:4][3:0] = {opcode, immediate} //used for LI
+- S: [6:4][3][2:0] = {opcode, type, addr/reg} //used for PRT
 
 ## Register Set
 Now for registers (all 7 bits):
