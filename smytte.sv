@@ -34,8 +34,7 @@ module smytte (
   
   //execute and ALU stage
 
-  
-  alu A (.a(regA), .b(regB), .alu_op(control_signals[6:5]), .c(regC), .negative(), .zero(), .carry(), .overflow());
+  alu A (.a(dataA), .b(dataB), .alu_op(control_signals[6:5]), .c(dataC), .negative(), .zero(), .carry(), .overflow());
   
 endmodule
 
