@@ -28,21 +28,20 @@ module smytte (
   control_signal_controller CSC (.opcode(opcode), .control_signals(control_signals));
 
   //register file
-  logic [6:0] regA, regB;
-  regfile RG (.reg1(reg1), .reg2(reg2), .reg_write(control_signals[4]), .a(regA), .b(regB));
+  logic [1:0] regC;
+  logic [6:0] dataA, dataB, dataC;
+  regfile RG (.regA(rd), .regB(r), .dataA(dataA), .dataB(dataB), .regC(regC), .dataC(dataC), .write_enable(control_signals[4]));
   
-
   //execute and ALU stage
-  logic [6:0] regC;
+
   
   alu A (.a(regA), .b(regB), .alu_op(control_signals[6:5]), .c(regC), .negative(), .zero(), .carry(), .overflow());
   
 endmodule
 
 
-    
-    
-  
+
+
       
   
                            
