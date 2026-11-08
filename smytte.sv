@@ -1,19 +1,27 @@
-module smyte (
+//top module fr symte, targeting tinytapeout
+
+module smytte (
   input logic clk,
   input logic rst,
   input logic [6:0] instruction,
   output logic [6:0] external_output
 );
   
-  logic [2:0] opcode;
-  logic [1:0] reg1, reg2;
+  logic [2:0] opcode, addr;
+  logic [1:0] rd, r, bt;
+  logic f;
 
   //basically instruction fetch and decode
   always_comb begin
-    assign opcode = instruction[6:4];
-    assign reg1 = instruction[3:2];
-    assign reg2 = instruction[1:0];
+    opcode = instruction[6:4]; //used in all instructions
+    bt = instruction [3:2]; //used only in branches
+    rd = instruction[3:2]; //used for LD, STR, ADD, and SUB
+    r = instruction[1:0]; //used for LD, STR, ADD, SUB and branches
+    
+    f = instruction[3]; //used only for PRT
+    addr = instruction[2:0]; //used only for PRT
   end
+
 
   //create simple control signals for different instructions
   logic [6:0] control_signals; // {alu_operation, reg_write, mem_write, mem_read, flags_read, flags_write};
