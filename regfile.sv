@@ -12,6 +12,7 @@ module regfile (
 );
 
   logic [6:0] registers [1:0];
+  intger i;
 
   //async reads
   assign dataA = registers[regA];
