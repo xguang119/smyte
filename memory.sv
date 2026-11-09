@@ -1,5 +1,6 @@
 //my memory for smytte
 //not sure how much room is avaliable, but i'll set it to 8 smytes for now (since PRT can only print 8 addresses anyways)
+//note: to syntheize into ram, change the reset behavior to not reset everything in one clock cycle
 
 module memory (
   input logic clk,
