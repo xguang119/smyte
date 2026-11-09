@@ -5,7 +5,7 @@ module memory (
   input logic clk,
   input logic rst,
   input logic [2:0] addr,
-  input logic [2:0] data_in
+  input logic [6:0] data_in,
   input logic write_enable,
   output logic [6:0] data_out,
 );
@@ -16,7 +16,7 @@ module memory (
   //synch read port and reset
   always_ff @(posedge clk) begin
     if (rst) begin
-      for (i = 0, i < 8, i = i + i) begin
+      for (i = 0; i < 8; i = i + i) begin
         mem[i] <= '0;
       end
     end else if (write_enable)
