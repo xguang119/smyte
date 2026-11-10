@@ -25,7 +25,7 @@ Load and Store are a must.
 - STR r1, [r2] //stores contents of r1 into address held in r2
 - LI # //loads immediate into r1 (thus allowing a 4 bit immediate)
 
-Branching for control and jumps
+Branching for control and jumps (tinytapeout version wont even use this)
 - B [r1] //branch to address held in r1
   for branches, we get two additional bits, which will signify different branch types
     2'b00: branch if zero
