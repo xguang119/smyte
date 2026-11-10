@@ -15,7 +15,6 @@ My heart tells me the second is more fun.
 Very limited gate count and size, so required to have the absolute minimum!
 7 bit instructions will be split into 3 bit opcodes, and 2 bit registers, giving us a total of 4 registers and 8 unique instructions to work with.
 I want to challenge myself by not using any resources besides what I already know, so everything is esentially from scratch.
-The end goal is to be turing complete, ignoring the potential lack of memory
 
 Starting off, I will determine what instructions are a must / make life easier.
 
@@ -42,10 +41,8 @@ Now for registers (all 7 bits):
 - 4 general-purpose addressable registers
 
 ## Instruction Set (traditional version)
-Very limited gate count and size, so required to have the absolute minimum!
 7 bit instructions will be split into 3 bit opcodes, and 2 bit registers, giving us a total of 4 registers and 8 unique instructions to work with.
-I want to challenge myself by not using any resources besides what I already know, so everything is esentially from scratch.
-The end goal is to be turing complete, ignoring the potential lack of memory
+The end goal is to be turing complete
 
 Starting off, I will determine what instructions are a must / make life easier.
 
