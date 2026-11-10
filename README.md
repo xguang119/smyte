@@ -29,6 +29,7 @@ ALU stuff
 - SUB r1, r2 //subtracts r2 from r1, then stores back to r1
 
 Misc.
+- MV r1, r2 //moves contents of r2 into r1, not required but makes life easy
 - PRT #, [addr] //prints addr contents into output, # selects if reg or memory
 
 ### Instruction Formats
