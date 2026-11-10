@@ -33,7 +33,7 @@ Misc.
 - PRT #, [addr] //prints addr contents into output, # selects if reg or memory
 
 ### Instruction Formats
-- G: [6:4][3:2][1:0] = {opcode, rd, ro} //used for LD, STR, ADD, and SUB
+- G: [6:4][3:2][1:0] = {opcode, rd, ro} //used for LD, STR, ADD, SUB, and MV
 - I: [6:4][3:0] = {opcode, immediate} //used for LI
 - S: [6:4][3][2:0] = {opcode, type, addr/reg} //used for PRT
 
