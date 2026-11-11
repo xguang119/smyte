@@ -2,29 +2,39 @@
 //not sure how much room is avaliable, but i'll set it to 8 smytes for now (since PRT can only print 8 addresses anyways)
 //note: to syntheize into ram, change the reset behavior to not reset everything in one clock cycle
 
-module memory (
+module tt_memory (
   input logic clk,
   input logic rst,
-  input logic [2:0] addr,
-  input logic [6:0] data_in,
-  input logic write_enable,
+  //read stuff (load)
+  input logic [2:0] read_addr,
   output logic [6:0] data_out,
+  //write stuff (store)
+  input logic [2:0] wr_addr,
+  input logic [6:0] data_in,
+  input logic mem_write_enable,
+  //print stuff (print)
+  input logic [2:0] pr_addr,
+  output logic [6:0] pr_data,
 );
 
   logic [6:0] mem [2:0]; //8 symtes
-  integer i;
 
-  //synch read port and reset
+  //NONE OF THE STUFF BELOW IS CORRECT
+ 
+  
+
+
+  //synch write port and reset
   always_ff @(posedge clk) begin
     if (rst) begin
       for (i = 0; i < 8; i = i + i) begin
         mem[i] <= '0;
       end
-    end else if (write_enable)
+    end else if (mem_write_enable)
       mem[addr] <= data_in;
   end
 
-  //async write port
+  //async read port
   assign data_out = mem[addr];
 
 endmodule

@@ -1,4 +1,4 @@
-module regfile (
+module tt_regfile (
   input logic clk,
   input logic rst,
   //read ports
@@ -6,13 +6,13 @@ module regfile (
   //data output ports
   output logic [6:0] dataA, dataB
   //write ports
-  input logic [1:0] regC,
-  input logic [6:0] dataC,
+  input logic [1:0] regWB,
+  input logic [6:0] dataWB,
   input logic write_enable
 );
 
   logic [6:0] registers [1:0];
-  intger i;
+  integer i;
 
   //async reads
   assign dataA = registers[regA];
@@ -25,7 +25,7 @@ module regfile (
         registers[i] <= '0;
       end
     end else if (write_enable) begin
-      registers[regC] <= dataC;
+      registers[regWB] <= dataWB;
     end
   end
 endmodule
