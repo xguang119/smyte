@@ -22,7 +22,7 @@ Starting off, I will determine what instructions are a must / make life easier.
 Load and Store are a must. 
 - LD r1, [r2] //loads contents of address r2 into r1
 - STR r1, [r2] //stores contents of r1 into address held in r2
-- LI r1 //loads next 7-bits into into r1 
+- LI # //loads # into r1 (4 bits)
 
 ALU stuff
 - ADD r1, r2 //adds r1 and r2, then stores back to r1
@@ -35,7 +35,7 @@ Misc.
 
 ### Instruction Formats
 - G: [6:4][3:2][1:0] = {opcode, rd, ro} //used for LD, STR, ADD, SUB, AND and OR
-- I: [6:4][3:2][1:0] = {opcode, func, rd} //used for LI
+- I: [6:4][3:0] = {opcode, imm} //used for LI
 - S: [6:4][3][2:0] = {opcode, type, addr/reg} //used for PRT
 
 ## Register Set
