@@ -12,10 +12,10 @@ module smytte (
   logic [1:0] rd, r;
   logic flag;
   logic [3:0] imm;
-  logic [6:0] ctrlsig;
+  logic [9:0] ctrlsig;
 
   //declaratinos for register file
-  logic [6:0] dataA, dataB, dataWB, dataP;
+  logic [6:0] dataA, dataB, dataWB, dataP, dataLD;
 
   //simple instruction decode
   always_comb begin
@@ -30,30 +30,28 @@ module smytte (
   
   //control
   tt_control ctrl (.opcode(opcode), .ctrlsig(ctrlsig));
+  //ctrlsig = {alu_op, mux_wb, reg_wr, reg_li, mem_load, mem_store};
+  
+  //mutiplexor to select regfile wb
+  tt_wbmux mx (.ctrl(ctrlsig[5:4]), .imm(imm), .ld_mem(dataLD), .alu(dataC), .out(dataWB));
 
   //regfile
-
   tt_regfile rf (.clk(clk), .rst(rst), 
       .regA(rd), regB(r),
       .dataA(dataA), dataB(dataB),
-      .regWB(rd), .dataWB(dataWB), .write_enable(ctrlsig[2])
+      .dataWB(dataWB), .ctrl(ctrlsig[3:2])
       );
   
   //ALU stage
-  tt_alu A (.a(dataA), .b(dataB), .alu_op(ctrlsig[6:3]), .c(dataC));
+  tt_alu A (.a(dataA), .b(dataB), .alu_op(ctrlsig[9:6]), .c(dataC));
   
   //memory stage
   tt_memory M (.clk(clk), .rst(rst),
-      .read_addr(dataB[2:0]), .data_out(dataLD), //for load
-      .wr_addr(dataB[2:0]), .data_in(dataA), mem_write_enable(ctrlsig[1]), //for store
+      .ld_addr(dataB[2:0]), .ld_data(dataLD), //for load
+      .st_addr(dataB[2:0]), .st_data(dataA), mem_write_enable(ctrlsig[1]), //for store
       .pr_addr(addr), .pr_data(dataP) //for print
       );
 
-  //multiplexor to select either load or load imm data
-  assign dataL = (ctrlsig[0]) ? dataLD : {3'b000, imm};
-
-  //multiplexor to select either ALU data or load data
-  assign dataWB = (ctrlsig[6] == 0) ? dataC : dataL; 
   
 endmodule
 
