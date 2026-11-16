@@ -7,11 +7,12 @@ module tt_memory (
   input logic rst,
   //read stuff (load)
   input logic [2:0] ld_addr,
+  input logic mem_load,
   output logic [6:0] ld_data,
   //write stuff (store)
   input logic [2:0] st_addr,
   input logic [6:0] st_data,
-  input logic mem_write_enable,
+  input logic mem_store,
   //print stuff (print)
   input logic [2:0] pr_addr,
   output logic [6:0] pr_data,
