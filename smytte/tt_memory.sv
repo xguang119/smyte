@@ -20,23 +20,21 @@ module tt_memory (
 
   logic [6:0] mem [2:0]; //8 symtes
 
-  //NONE OF THE STUFF BELOW IS CORRECT
- 
+  //synch write and read port
+  always_ff @(posedge clk) begin
+      if (mem_store) begin
+          mem[st_addr] <= st_data;
+      end else if (mem_load) begin
+          ld_data <= mem[ld_addr];
+      end
+  end
+
+  //no print function
   
 
 
-  //synch write port and reset
-  always_ff @(posedge clk) begin
-    if (rst) begin
-      for (i = 0; i < 8; i = i + i) begin
-        mem[i] <= '0;
-      end
-    end else if (mem_write_enable)
-      mem[addr] <= data_in;
-  end
-
   //async read port
-  assign data_out = mem[addr];
+  //assign ld_data = mem[ld_addr];
 
 endmodule
   
